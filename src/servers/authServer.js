@@ -53,35 +53,20 @@ async function validateUser(username, password, collection) {
 
 // validates user against database
 async function validateRefreshToken(token) {
-  // data request parameters
-  var data = JSON.stringify({
-    collection: "RefreshTokens",
-    database: "GreenGovanDatabase",
-    dataSource: "GreenGovanCluster",
-    filter: {
-      token: token,
+  var data = [
+    {
+      filter: {
+        token: token,
+      },
     },
-  });
-
-  // request configuation
-  var config = {
-    method: "POST",
-    url: `${process.env.DATABASE_ENDPOINT}/action/findOne`,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Request-Headers": "*",
-      "api-key": process.env.DATABASE_API_KEY,
-    },
-    data: data,
-  };
-
-  // find matching user in database
-  return await axios(config)
-    .then(function (response) {
-      return response.data.document;
+  ];
+  await databaseModule
+    .database("RefreshTokens", "findOne", data)
+    .then((document) => {
+      return document;
     })
-    .catch(function (error) {
-      console.log(error);
+    .catch((err) => {
+      console.warn(err);
       return null;
     });
 }
