@@ -5,7 +5,8 @@
   "main": "App.js",
   "scripts": {
     "start": "node app",
-    "test": "jest"
+    "test": "jest",
+    "testBand": "jest --runInBand"
   },
   "author": "Jake Hallam",
   "license": "ISC",
