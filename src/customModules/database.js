@@ -9,11 +9,12 @@ async function query(collection, action, args) {
   // Database call config
   var config = {
     method: "POST",
-    url: `${process.env.DATABASE_ENDPOINT}/action/${action}`,
+    url: `https://eu-west-2.aws.data.mongodb-api.com/app/data-inait/endpoint/data/v1/action/${action}`,
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Request-Headers": "*",
-      "api-key": process.env.DATABASE_API_KEY,
+      "api-key":
+        "TnjmvpIUN2AZvsAAstxaDmG5X93ay6PlZ74eSaZHub5ACPeSmAxSdLwaIHw1uiBd",
     },
     data: {
       collection: collection,
