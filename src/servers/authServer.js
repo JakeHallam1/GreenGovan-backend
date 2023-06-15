@@ -14,7 +14,7 @@ authServer.use(
 // generates new access token
 function generateAccessToken(user) {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET_KEY, {
-    expiresIn: "60m",
+    //expiresIn: "60m",
   });
 }
 

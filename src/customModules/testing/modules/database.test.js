@@ -1,6 +1,6 @@
-const database = require("../database");
+const database = require("../../database");
 
-test("Test running", async () => {
+test("Test request user from the database", async () => {
   var data = [
     {
       // Filter user documents by object ID
